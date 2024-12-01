@@ -16,12 +16,12 @@
 // Button Definitions
 #define BUTTON1 2
 #define BUTTON2 3
-#define TRIGWIRE0 6
-#define TRIGWIRE1 7
-#define TRIGWIRE2 8
-#define TRIGWIRE3 9
-#define TRIGWIRE4 10
-#define TRIGWIRE5 11
+#define TRIGWIRE0 6   // yellow
+#define TRIGWIRE1 7   //red
+#define TRIGWIRE2 8   //white
+#define TRIGWIRE3 9    //orange
+#define TRIGWIRE4 10   //blue
+#define TRIGWIRE5 11 // gren
 #define SOLENOID 11
 #define LOCK 14
 #define LBUTTON 15
@@ -299,29 +299,31 @@ void loop() {
   // Handle phase transitions
   if (buttonPhase == PHASE_ONE && (currentMillis - phaseStartTime) > 3000) {
     typewriterEffect("Classification velocity", promptText, 100);
+    typewriterEffect("If your explosive is a high explosive, press green button , If low, press red button ", promptText, 100);
     phaseStartTime = currentMillis;
     buttonPhase = PHASE_TWO;
   }
 
   if (buttonPhase == PHASE_TWO && (currentMillis - phaseStartTime) > 3000) {
-    typewriterEffect("If A, press button 1, If B, press button 2", promptText, 100);
+    typewriterEffect("Initiation suspectibility", promptText, 100);
+    typewriterEffect("If your explosive is a primary explosive, press green button , If secondary, press red button ", promptText, 100);
     phaseStartTime = currentMillis;
     buttonPhase = PHASE_WIRE;
   }
 
   if (buttonPhase == PHASE_WIRE && (currentMillis - phaseStartTime) > 3000) {
-    typewriterEffect("Nature Balance", promptText, 100);
+    typewriterEffect(" Oxygen Balance", promptText, 100);
     phaseStartTime = currentMillis;
     buttonPhase = PHASE_WIRE_PROMPT;
   }
 
   if (buttonPhase == PHASE_WIRE_PROMPT) {
     if (currentMillis - phaseStartTime > 3000 && currentMillis - phaseStartTime <= 5000) {
-      typewriterEffect("If your A has a B, do C", promptText, 100);
+      typewriterEffect("If your explosive has a negative oxygen balance, cut the orange wire ", promptText, 100);
     } else if (currentMillis - phaseStartTime > 5000 && currentMillis - phaseStartTime <= 7000) {
-      typewriterEffect("If your A has a D, do E", promptText, 100);
+      typewriterEffect("If your explosive has a neutral oxygen balance, cut the blue wire", promptText, 100);
     } else if (currentMillis - phaseStartTime > 7000 && currentMillis - phaseStartTime <= 9000) {
-      typewriterEffect("If your A has a F, do G", promptText, 100);
+      typewriterEffect("If your explosive has a neutral oxygen balance, cut the yellow wire", promptText, 100);
     }
   }
 
@@ -347,6 +349,7 @@ void loop() {
   static String enteredKeycode = "";
 
   if (buttonPhase == PHASE_KEYCODE) {
+     typewriterEffect("Enter keycode: ", promptText, 100)
     keypad.tick();
     keypadEvent keyEvent = keypad.read();
     char key = keyEvent.bit.KEY;
