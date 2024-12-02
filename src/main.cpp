@@ -153,11 +153,11 @@ void setup() {
   // Wait for 5 seconds
   delay(5000);
   // Display the second prompt with typewriter effect
-  typewriterEffect("Solve the puzzle", promptText, 100);
+  typewriterEffect("Disarm the device", promptText, 100);
   // Wait for 5 seconds
   delay(5000);
   // Display the third prompt with typewriter effect
-  typewriterEffect("You have fifteen minutes to solve the puzzle, starting now", promptText, 100);
+  typewriterEffect("You have fifteen minutes to disarm starting now", promptText, 100);
   // Wait for 5 seconds
   delay(5000);
   // Display the fourth prompt with typewriter effect
@@ -173,7 +173,7 @@ void setup() {
   // Wait for 5 seconds
   delay(5000);
   // Display the seventh prompt with typewriter effect
-  typewriterEffect("Some Wires will subtract time or speed it up", promptText, 100);
+  typewriterEffect("Some wires will subtract time or speed it up", promptText, 100);
   // Wait for 5 seconds
   delay(5000);
   // Display the eighth prompt with typewriter effect
@@ -349,7 +349,7 @@ void loop() {
   static String enteredKeycode = "";
 
   if (buttonPhase == PHASE_KEYCODE) {
-     typewriterEffect("Enter keycode: ", promptText, 100)
+     typewriterEffect("Enter keycode: ", promptText, 100);
     keypad.tick();
     keypadEvent keyEvent = keypad.read();
     char key = keyEvent.bit.KEY;
