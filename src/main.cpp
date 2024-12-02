@@ -14,14 +14,14 @@
 #include <Nextion.h>
 
 // Button Definitions
-#define BUTTON1 2
-#define BUTTON2 3
+#define BUTTON1 2 //Green
+#define BUTTON2 3   //RED
 #define TRIGWIRE0 6   // yellow
 #define TRIGWIRE1 7   //red
 #define TRIGWIRE2 8   //white
 #define TRIGWIRE3 9    //orange
 #define TRIGWIRE4 10   //blue
-#define TRIGWIRE5 11 // gren
+#define TRIGWIRE5 11 // green
 #define SOLENOID 11
 #define LOCK 14
 #define LBUTTON 15
@@ -30,7 +30,7 @@
 const int correctWire = TRIGWIRE2; // Change this to the correct wire
 const int deductTimeWire1 = TRIGWIRE0; // Change this to the first wire that deducts time
 const int deductTimeWire2 = TRIGWIRE1; // Change this to the second wire that deducts time
-
+const int FireWire = TRIGWIRE5; // Change this to the second wire that deducts time
 // Create a Nextion object
 NexText countdownText = NexText(0, 1, "t1"); // Page 0, component ID 1, component name "t1"
 NexText promptText = NexText(0, 2, "t0"); // Page 0, component ID 2, component name "t0"
@@ -398,9 +398,9 @@ void loop() {
 
   if (totalMovement > 1.0) { // Adjusted sensitivity
     int timeDeduction = 0;
-    if (totalMovement > 2.0) {
+    if (totalMovement > 5.0) {
       timeDeduction = 30; // Severe movement
-    } else if (totalMovement > 1.5) {
+    } else if (totalMovement > 6) {
       timeDeduction = 20; // Moderate movement
     } else {
       timeDeduction = 10; // Minor movement
