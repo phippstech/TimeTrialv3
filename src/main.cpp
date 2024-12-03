@@ -296,6 +296,7 @@ void loop() {
   }
   lastButtonState2 = reading2;
 
+  // SOMETHING IS GOING ON IN THE PHASE TRANSITIONS, IT DOESNT SEEM TO READ THE BUTTON, BUT IT JUST MOVES ON THROUGH UNTIL WIRE
   // Handle phase transitions
   if (buttonPhase == PHASE_ONE && (currentMillis - phaseStartTime) > 3000) {
     typewriterEffect("Classification velocity", promptText, 100);
